@@ -1,7 +1,62 @@
 @import "tailwindcss";
+@plugin "daisyui";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Kannada:wght@100..900&family=Walter+Turncoat&display=swap');
 
-@plugin "daisyui" {
-    themes: winter, night;
+body {
+    font-family: "Walter Turncoat", cursive;
+    font-style: normal;
 }
 
-;
+.kannada {
+    font-family: "Noto Serif Kannada", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+/* Winter theme */
+@plugin "daisyui/theme" {
+    name: "winter";
+    default: true;
+    /* set winter as default */
+
+    --color-primary: #0ea5e9;
+    /* sky-500 */
+    --color-secondary: #14b8a6;
+    /* teal-400 */
+    --color-accent: #22c55e;
+    /* green-500 */
+}
+
+/* Night theme */
+@plugin "daisyui/theme" {
+    name: "night";
+
+    --color-primary: #0ea5e9;
+    /* dark teal */
+    --color-secondary: #2563eb;
+    /* blue-600 */
+    --color-accent: #059669;
+    /* emerald-600 */
+}
+
+/* Gradient flow animation */
+@keyframes flow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Animated background utility */
+.animated-background {
+    @apply bg-gradient-to-r from-primary/30 via-secondary/30 to-accent/30;
+    background-size: 200% 200%;
+    animation: flow 10s ease-in-out infinite;
+}

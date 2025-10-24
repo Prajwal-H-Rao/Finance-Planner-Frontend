@@ -21,11 +21,13 @@ const Form: React.FC = () => {
     <>
       <div className=" mx-auto min-w-md min-h-max card bg-base-300/60 border border-primary/10 shadow-xl rounded-2xl">
         <div className="card-body">
-          <h2 className="card-title justify-center">Login</h2>
+          <h2 className="card-title justify-center text-xl">Login</h2>
           <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="text-base-content text-sm font-semibold">
+                  Email
+                </span>
               </label>
               <input
                 value={formState.email}
@@ -33,12 +35,14 @@ const Form: React.FC = () => {
                 type="email"
                 name="email"
                 placeholder="Email"
-                className="input input-primary w-full rounded-2xl"
+                className="input input-primary w-full rounded-2xl  placeholder:text-xs"
               />
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+                <span className=" text-sm text-base-content font-semibold">
+                  Password
+                </span>
               </label>
               <input
                 onChange={handleChange}
@@ -46,7 +50,7 @@ const Form: React.FC = () => {
                 type="password"
                 name="password"
                 placeholder="Password"
-                className="input input-primary w-full rounded-2xl"
+                className="input input-primary w-full rounded-2xl placeholder:text-xs"
               />
             </div>
             <div className="form-control mt-6">
