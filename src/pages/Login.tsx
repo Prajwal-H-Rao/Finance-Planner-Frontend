@@ -10,7 +10,10 @@ const Login: FC = () => {
   return (
     <div className=" flex-1 w-full  flex items-center">
       {toastMessage ? (
-        <Toast toastMessage={toastMessage} success={false} />
+        <Toast
+          toastMessage={toastMessage.message}
+          success={toastMessage.success}
+        />
       ) : null}
       <Form
         formConfig={LoginFormConfig}

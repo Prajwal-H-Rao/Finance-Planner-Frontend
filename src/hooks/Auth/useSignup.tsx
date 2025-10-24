@@ -6,16 +6,38 @@ const useSignup = () => {
     confirmPassword: "",
   });
   const [loading, setLoading] = React.useState(false);
-  const [toastMessage, setToastMessage] = React.useState<string | null>(null);
+  const [toastMessage, setToastMessage] = React.useState<{
+    message: string;
+    success: boolean;
+  } | null>(null);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    if (!formState.email || !formState.password || !formState.confirmPassword) {
+      setToastMessage({ message: "Please fill in all fields", success: false });
+      setTimeout(() => {
+        setToastMessage(null);
+      }, 3000);
+      return;
+    }
+
+    if (formState.password !== formState.confirmPassword) {
+      setToastMessage({ message: "Passwords do not match", success: false });
+      setTimeout(() => {
+        setToastMessage(null);
+      }, 3000);
+      return;
+    }
     setLoading(true);
 
     // Simulate async login
     setTimeout(() => {
       setLoading(false);
-      setToastMessage(`Signed up successfully as ${formState.email}`);
+      setToastMessage({
+        message: `Signed up successfully as ${formState.email}`,
+        success: true,
+      });
 
       // Clear toast after 3 seconds
       setTimeout(() => setToastMessage(null), 3000);
