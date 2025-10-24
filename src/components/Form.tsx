@@ -13,7 +13,7 @@ const Form: React.FC<IFormprops> = ({
   return (
     <div className="relative mx-auto min-w-md min-h-max card bg-base-100 border border-primary/10 shadow-xl rounded-2xl">
       <div className="card-body">
-        <h2 className="card-title justify-center text-xl">Login</h2>
+        <h2 className="card-title justify-center text-xl">{buttonText}</h2>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           {formConfig.map((field, index) => {
             return (
