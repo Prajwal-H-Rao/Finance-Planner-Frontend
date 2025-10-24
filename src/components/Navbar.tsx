@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <nav className="navbar h-20 px-6 flex justify-between items-center  ">
       <div className="flex-1">
-        <h1 className="text-3xl font-bold mb-6 kannada">ಕಾಸ್ ಇಲ್ಲ</h1>
+        <h1 className="text-3xl font-bold mb-6 pt-2 kannada">ಕಾಸ್ ಇಲ್ಲ</h1>
       </div>
 
       <label className="flex items-center cursor-pointer gap-2">

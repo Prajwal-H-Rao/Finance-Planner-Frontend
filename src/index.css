@@ -1,9 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Kannada:wght@100..900&family=Walter+Turncoat&display=swap');
 @import "tailwindcss";
 @plugin "daisyui";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Kannada:wght@100..900&family=Walter+Turncoat&display=swap');
 
 body {
-    font-family: "Walter Turncoat", cursive;
+    font-family: "Inter", sans-serif;
     font-style: normal;
 }
 
@@ -24,7 +24,10 @@ body {
     --color-secondary: #14b8a6;
     /* teal-400 */
     --color-accent: #22c55e;
-    /* green-500 */
+
+    --color-success: #007d4f;
+
+    --color-error: #ef4444;
 }
 
 /* Night theme */
@@ -37,6 +40,7 @@ body {
     /* blue-600 */
     --color-accent: #059669;
     /* emerald-600 */
+    --color-success: #007d4f --color-error: #ef4444;
 }
 
 /* Gradient flow animation */
@@ -52,6 +56,41 @@ body {
     100% {
         background-position: 0% 50%;
     }
+}
+
+/* Slide in from right */
+@keyframes slide-in-right {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Slide out to right */
+@keyframes slide-out-right {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Classes to use */
+.animate-slide-in {
+    animation: slide-in-right 0.5s ease-out forwards;
+}
+
+.animate-slide-out {
+    animation: slide-out-right 0.5s ease-in forwards;
 }
 
 /* Animated background utility */
