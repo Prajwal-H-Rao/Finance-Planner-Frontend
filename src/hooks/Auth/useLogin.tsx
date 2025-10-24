@@ -37,7 +37,7 @@ const useLogin = () => {
       .catch((error) => {
         setLoading(false);
         setToastMessage({
-          message: `Error logging in: ${error.message}`,
+          message: `Error logging in: ${error.response.data.message}`,
           success: false,
         });
         // Clear toast after 3 seconds

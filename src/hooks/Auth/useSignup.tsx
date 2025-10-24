@@ -46,7 +46,7 @@ const useSignup = () => {
       .catch((error) => {
         setLoading(false);
         setToastMessage({
-          message: `Error signing up: ${error.message}`,
+          message: `Error signing up: ${error.response.data.message}`,
           success: false,
         });
         // Clear toast after 3 seconds
