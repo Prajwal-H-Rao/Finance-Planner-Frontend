@@ -1,12 +1,15 @@
 import { useTheme } from "../hooks/Theme/useTheme";
-
+import Icon from "../assets/bankruptcy.png";
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
     <nav className="navbar h-20 px-6 flex justify-between items-center  ">
-      <div className="flex-1">
-        <h1 className="text-3xl font-bold mb-6 pt-2 kannada">ಕಾಸ್ ಇಲ್ಲ</h1>
+      <div className="flex-1 flex items-center gap-2 h-full">
+        <span className="h-full">
+          <img className="w-15 h-5/6" src={Icon} alt="Logo" />
+        </span>
+        <h1 className="text-4xl font-bold kannada pt-5">ಕಾಸ್ ಇಲ್ಲ</h1>
       </div>
 
       <label className="flex items-center cursor-pointer gap-2">

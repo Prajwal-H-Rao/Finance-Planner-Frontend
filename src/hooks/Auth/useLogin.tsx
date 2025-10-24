@@ -1,4 +1,5 @@
 import React from "react";
+import { login } from "../../services/auth/auth.services";
 const useLogin = () => {
   const [formState, setFormState] = React.useState({
     email: "",
@@ -23,17 +24,25 @@ const useLogin = () => {
 
     setLoading(true);
 
-    // Simulate async login
-    setTimeout(() => {
-      setLoading(false);
-      setToastMessage({
-        message: `Logged in successfully as ${formState.email}`,
-        success: true,
+    login(formState.email, formState.password)
+      .then(() => {
+        setLoading(false);
+        setToastMessage({
+          message: `Logged in successfully as ${formState.email}`,
+          success: true,
+        });
+        // Clear toast after 3 seconds
+        setTimeout(() => setToastMessage(null), 3000);
+      })
+      .catch((error) => {
+        setLoading(false);
+        setToastMessage({
+          message: `Error logging in: ${error.message}`,
+          success: false,
+        });
+        // Clear toast after 3 seconds
+        setTimeout(() => setToastMessage(null), 3000);
       });
-
-      // Clear toast after 3 seconds
-      setTimeout(() => setToastMessage(null), 3000);
-    }, 3000);
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {

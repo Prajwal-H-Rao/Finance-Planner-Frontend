@@ -1,4 +1,5 @@
 import React from "react";
+import { signup } from "../../services/auth/auth.services";
 const useSignup = () => {
   const [formState, setFormState] = React.useState({
     email: "",
@@ -32,16 +33,25 @@ const useSignup = () => {
     setLoading(true);
 
     // Simulate async login
-    setTimeout(() => {
-      setLoading(false);
-      setToastMessage({
-        message: `Signed up successfully as ${formState.email}`,
-        success: true,
+    signup(formState.email, formState.password)
+      .then(() => {
+        setLoading(false);
+        setToastMessage({
+          message: `Signed up successfully as ${formState.email}`,
+          success: true,
+        });
+        // Clear toast after 3 seconds
+        setTimeout(() => setToastMessage(null), 3000);
+      })
+      .catch((error) => {
+        setLoading(false);
+        setToastMessage({
+          message: `Error signing up: ${error.message}`,
+          success: false,
+        });
+        // Clear toast after 3 seconds
+        setTimeout(() => setToastMessage(null), 3000);
       });
-
-      // Clear toast after 3 seconds
-      setTimeout(() => setToastMessage(null), 3000);
-    }, 3000);
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
