@@ -6,6 +6,8 @@ const login = async (email: string, password: string) => {
       email,
       password,
     });
+    localStorage.setItem("token", response.data.accessToken);
+    localStorage.setItem("refreshToken", response.data.refreshToken);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -19,6 +21,8 @@ const signup = async (email: string, password: string) => {
       email,
       password,
     });
+    localStorage.setItem("token", response.data.accessToken);
+    localStorage.setItem("refreshToken", response.data.refreshToken);
     return response.data;
   } catch (error) {
     console.log(error);
