@@ -2,46 +2,38 @@ import React from "react";
 import type { IFormprops } from "../types/form.types";
 
 const Form: React.FC<IFormprops> = ({
+  formConfig,
   formState,
   handleChange,
   handleSubmit,
   loading,
+  buttonText = "Login",
+  loadingText = "Logging in...",
 }: IFormprops) => {
   return (
     <div className="relative mx-auto min-w-md min-h-max card bg-base-100 border border-primary/10 shadow-xl rounded-2xl">
       <div className="card-body">
         <h2 className="card-title justify-center text-xl">Login</h2>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-          <div className="form-control">
-            <label className="label">
-              <span className="text-base-content text-sm font-semibold">
-                Email
-              </span>
-            </label>
-            <input
-              value={formState.email}
-              onChange={handleChange}
-              type="email"
-              name="email"
-              placeholder="Email"
-              className="input border-secondary w-full rounded-2xl placeholder:text-xs"
-            />
-          </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="text-sm text-base-content font-semibold">
-                Password
-              </span>
-            </label>
-            <input
-              value={formState.password}
-              onChange={handleChange}
-              type="password"
-              name="password"
-              placeholder="Password"
-              className="input border-secondary w-full rounded-2xl placeholder:text-xs"
-            />
-          </div>
+          {formConfig.map((field, index) => {
+            return (
+              <div className="form-control" key={index}>
+                <label className="label">
+                  <span className="text-base-content text-sm font-semibold">
+                    {field.label}
+                  </span>
+                </label>
+                <input
+                  value={formState[field.name] || ""}
+                  onChange={handleChange}
+                  type={field.type}
+                  name={field.name}
+                  placeholder={field.placeholder}
+                  className="input border-secondary w-full rounded-2xl placeholder:text-xs"
+                />
+              </div>
+            );
+          })}
           <div className="form-control mt-6">
             <button
               type="submit"
@@ -51,10 +43,10 @@ const Form: React.FC<IFormprops> = ({
               {loading ? (
                 <>
                   <span className="loading loading-spinner loading-sm"></span>
-                  Logging in...
+                  {loadingText}
                 </>
               ) : (
-                "Login"
+                buttonText
               )}
             </button>
           </div>
