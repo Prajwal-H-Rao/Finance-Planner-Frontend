@@ -75,6 +75,7 @@ body {
 @keyframes slide-out-right {
     0% {
         transform: translateX(0);
+
         opacity: 1;
     }
 
@@ -95,7 +96,13 @@ body {
 
 /* Animated background utility */
 .animated-background {
-    @apply bg-gradient-to-r from-primary/30 via-secondary/30 to-accent/30;
+    @apply bg-linear-30 from-secondary/40 via-accent/40 to-error/40;
+    background-size: 200% 200%;
+    animation: flow 10s ease-in-out infinite;
+}
+
+.animate-button {
+    @apply bg-linear-30 from-primary/50 via-secondary/50 to-error/50;
     background-size: 200% 200%;
     animation: flow 10s ease-in-out infinite;
 }

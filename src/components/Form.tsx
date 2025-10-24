@@ -8,7 +8,7 @@ const Form: React.FC<IFormprops> = ({
   loading,
 }: IFormprops) => {
   return (
-    <div className="relative mx-auto min-w-md min-h-max card bg-base-300/60 border border-primary/10 shadow-xl rounded-2xl">
+    <div className="relative mx-auto min-w-md min-h-max card bg-base-100 border border-primary/10 shadow-xl rounded-2xl">
       <div className="card-body">
         <h2 className="card-title justify-center text-xl">Login</h2>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -24,7 +24,7 @@ const Form: React.FC<IFormprops> = ({
               type="email"
               name="email"
               placeholder="Email"
-              className="input input-primary w-full rounded-2xl placeholder:text-xs"
+              className="input border-secondary w-full rounded-2xl placeholder:text-xs"
             />
           </div>
           <div className="form-control">
@@ -39,13 +39,13 @@ const Form: React.FC<IFormprops> = ({
               type="password"
               name="password"
               placeholder="Password"
-              className="input input-primary w-full rounded-2xl placeholder:text-xs"
+              className="input border-secondary w-full rounded-2xl placeholder:text-xs"
             />
           </div>
           <div className="form-control mt-6">
             <button
               type="submit"
-              className="btn btn-primary w-full rounded-2xl flex items-center justify-center gap-2"
+              className="btn border-secondary/20 animate-button w-full rounded-2xl flex items-center justify-center gap-2"
               disabled={loading}
             >
               {loading ? (
