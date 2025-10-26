@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import type { IFormprops } from "../types/form.types";
+import { useNavigate } from "react-router-dom";
 
 const Form: React.FC<IFormprops> = ({
   formConfig,
@@ -12,6 +13,7 @@ const Form: React.FC<IFormprops> = ({
   loadingText = "Logging in...",
   setToastMessage,
 }: IFormprops) => {
+  const navigate = useNavigate();
   const [googleLoading, setGoogleLoading] = useState(false);
 
   const googleLogin = useGoogleLogin({
@@ -21,7 +23,11 @@ const Form: React.FC<IFormprops> = ({
         message: "Google Login Successful!",
         success: true,
       });
-      setGoogleLoading(false);
+      setTimeout(() => {
+        setToastMessage(null);
+        setGoogleLoading(false);
+        navigate("/", { replace: true });
+      }, 3000);
       // Optionally: send tokenResponse.access_token to your backend
     },
     onError: (error) => {
