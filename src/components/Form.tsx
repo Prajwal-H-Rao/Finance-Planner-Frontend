@@ -11,7 +11,7 @@ const Form: React.FC<IFormprops> = ({
   loading,
   buttonText = "Login",
   loadingText = "Logging in...",
-  setToastMessage,
+  handleGoogleLogin,
 }: IFormprops) => {
   const navigate = useNavigate();
   const [googleLoading, setGoogleLoading] = useState(false);
@@ -19,12 +19,8 @@ const Form: React.FC<IFormprops> = ({
   const googleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => {
       console.log("Google Token Response:", tokenResponse);
-      setToastMessage({
-        message: "Google Login Successful!",
-        success: true,
-      });
+      handleGoogleLogin(tokenResponse.access_token);
       setTimeout(() => {
-        setToastMessage(null);
         setGoogleLoading(false);
         navigate("/", { replace: true });
       }, 3000);
@@ -32,15 +28,12 @@ const Form: React.FC<IFormprops> = ({
     },
     onError: (error) => {
       console.error("Google Login Failed:", error);
-      setToastMessage({
-        message: "Google Login Failed. Please try again.",
-        success: false,
-      });
+      handleGoogleLogin("");
       setGoogleLoading(false);
     },
   });
 
-  const handleGoogleLogin = () => {
+  const handleGoogleLoginButton = () => {
     setGoogleLoading(true);
     googleLogin();
   };
@@ -94,7 +87,7 @@ const Form: React.FC<IFormprops> = ({
           <div className="form-control mb-2">
             <button
               type="button"
-              onClick={handleGoogleLogin}
+              onClick={handleGoogleLoginButton}
               disabled={googleLoading}
               className="btn border-secondary/20 animate-button w-full rounded-2xl flex items-center justify-center gap-2"
             >

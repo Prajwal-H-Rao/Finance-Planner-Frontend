@@ -106,3 +106,9 @@ body {
     background-size: 200% 200%;
     animation: flow 10s ease-in-out infinite;
 }
+
+.animate-button-error {
+    @apply bg-linear-30 from-error/80 via-secondary/40 to-primary/50;
+    background-size: 200% 200%;
+    animation: flow 10s ease-in-out infinite;
+}

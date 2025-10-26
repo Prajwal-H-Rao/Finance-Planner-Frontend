@@ -1,5 +1,5 @@
 import React from "react";
-import { signup } from "../../services/auth/auth.services";
+import { googleLogin, signup } from "../../services/auth/auth.services";
 import { useNavigate } from "react-router-dom";
 const useSignup = () => {
   const navigate = useNavigate();
@@ -37,14 +37,16 @@ const useSignup = () => {
     // Simulate async login
     signup(formState.email, formState.password)
       .then(() => {
-        setLoading(false);
         setToastMessage({
           message: `Signed up successfully as ${formState.email}`,
           success: true,
         });
         // Clear toast after 3 seconds
-        setTimeout(() => setToastMessage(null), 3000);
-        navigate("/", { replace: true });
+        setTimeout(() => {
+          setLoading(false);
+          setToastMessage(null);
+          navigate("/", { replace: true });
+        }, 2000);
       })
       .catch((error) => {
         setLoading(false);
@@ -64,10 +66,46 @@ const useSignup = () => {
     });
   }
 
+  function handleGoogleLogin(token: string) {
+    if (token === "") {
+      setToastMessage({
+        message: "Google Login Failed. Please try again.",
+        success: false,
+      });
+      setTimeout(() => {
+        setToastMessage(null);
+      }, 3000);
+      return;
+    }
+
+    googleLogin(token)
+      .then((response) => {
+        setToastMessage({
+          message: `Logged in successfully as ${response.data.email}`,
+          success: true,
+        });
+        setTimeout(() => {
+          setToastMessage(null);
+          navigate("/", { replace: true });
+        }, 2000);
+      })
+      .catch((error) => {
+        setToastMessage({
+          message:
+            error.response?.data?.message || "Error logging in with Google",
+          success: false,
+        });
+        setTimeout(() => {
+          setToastMessage(null);
+        }, 3000);
+      });
+  }
+
   return {
     formState,
     handleChange,
     handleSubmit,
+    handleGoogleLogin,
     loading,
     toastMessage,
     setToastMessage,

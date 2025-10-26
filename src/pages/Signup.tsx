@@ -11,7 +11,7 @@ const Signup: React.FC = () => {
     handleSubmit,
     loading,
     toastMessage,
-    setToastMessage,
+    handleGoogleLogin,
   } = useSignup();
   return (
     <div className=" flex-1 w-full  flex items-center">
@@ -29,7 +29,7 @@ const Signup: React.FC = () => {
         loading={loading}
         buttonText="Signup"
         loadingText="Signing up..."
-        setToastMessage={setToastMessage}
+        handleGoogleLogin={handleGoogleLogin}
       />
     </div>
   );

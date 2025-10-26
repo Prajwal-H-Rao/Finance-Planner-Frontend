@@ -1,5 +1,5 @@
 import React from "react";
-import { login } from "../../services/auth/auth.services";
+import { googleLogin, login } from "../../services/auth/auth.services";
 import { useNavigate } from "react-router-dom";
 const useLogin = () => {
   const navigate = useNavigate();
@@ -28,14 +28,16 @@ const useLogin = () => {
 
     login(formState.email, formState.password)
       .then(() => {
-        setLoading(false);
         setToastMessage({
           message: `Logged in successfully as ${formState.email}`,
           success: true,
         });
         // Clear toast after 3 seconds
-        setTimeout(() => setToastMessage(null), 3000);
-        navigate("/", { replace: true });
+        setTimeout(() => {
+          setLoading(false);
+          setToastMessage(null);
+          navigate("/", { replace: true });
+        }, 2000);
       })
       .catch((error) => {
         setLoading(false);
@@ -55,6 +57,41 @@ const useLogin = () => {
     });
   }
 
+  function handleGoogleLogin(token: string) {
+    if (token === "") {
+      setToastMessage({
+        message: "Google Login Failed. Please try again.",
+        success: false,
+      });
+      setTimeout(() => {
+        setToastMessage(null);
+      }, 3000);
+      return;
+    }
+
+    googleLogin(token)
+      .then((response) => {
+        setToastMessage({
+          message: `Logged in successfully as ${response.email}`,
+          success: true,
+        });
+        setTimeout(() => {
+          setToastMessage(null);
+          navigate("/", { replace: true });
+        }, 3000);
+      })
+      .catch((error) => {
+        console.error("Google Login Error:", error);
+        setToastMessage({
+          message: error.response?.message || "Error logging in with Google",
+          success: false,
+        });
+        setTimeout(() => {
+          setToastMessage(null);
+        }, 3000);
+      });
+  }
+
   return {
     formState,
     handleChange,
@@ -62,6 +99,7 @@ const useLogin = () => {
     loading,
     toastMessage,
     setToastMessage,
+    handleGoogleLogin,
   };
 };
 

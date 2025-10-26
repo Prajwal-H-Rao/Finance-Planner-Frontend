@@ -11,7 +11,7 @@ const Login: FC = () => {
     handleSubmit,
     loading,
     toastMessage,
-    setToastMessage,
+    handleGoogleLogin,
   } = useLogin();
   return (
     <div className=" flex-1 w-full  flex items-center">
@@ -27,7 +27,7 @@ const Login: FC = () => {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         loading={loading}
-        setToastMessage={setToastMessage}
+        handleGoogleLogin={handleGoogleLogin}
       />
     </div>
   );
