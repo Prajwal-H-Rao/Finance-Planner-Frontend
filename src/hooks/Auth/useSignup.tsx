@@ -1,6 +1,8 @@
 import React from "react";
 import { signup } from "../../services/auth/auth.services";
+import { useNavigate } from "react-router-dom";
 const useSignup = () => {
+  const navigate = useNavigate();
   const [formState, setFormState] = React.useState({
     email: "",
     password: "",
@@ -42,6 +44,7 @@ const useSignup = () => {
         });
         // Clear toast after 3 seconds
         setTimeout(() => setToastMessage(null), 3000);
+        navigate("/", { replace: true });
       })
       .catch((error) => {
         setLoading(false);
