@@ -10,17 +10,26 @@ const Form: React.FC<IFormprops> = ({
   loading,
   buttonText = "Login",
   loadingText = "Logging in...",
+  setToastMessage,
 }: IFormprops) => {
   const [googleLoading, setGoogleLoading] = useState(false);
 
   const googleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => {
       console.log("Google Token Response:", tokenResponse);
+      setToastMessage({
+        message: "Google Login Successful!",
+        success: true,
+      });
       setGoogleLoading(false);
       // Optionally: send tokenResponse.access_token to your backend
     },
     onError: (error) => {
       console.error("Google Login Failed:", error);
+      setToastMessage({
+        message: "Google Login Failed. Please try again.",
+        success: false,
+      });
       setGoogleLoading(false);
     },
   });

@@ -5,8 +5,14 @@ import Form from "../components/Form";
 import { SignupFormConfig } from "../constants/Signup";
 
 const Signup: React.FC = () => {
-  const { formState, handleChange, handleSubmit, loading, toastMessage } =
-    useSignup();
+  const {
+    formState,
+    handleChange,
+    handleSubmit,
+    loading,
+    toastMessage,
+    setToastMessage,
+  } = useSignup();
   return (
     <div className=" flex-1 w-full  flex items-center">
       {toastMessage ? (
@@ -23,6 +29,7 @@ const Signup: React.FC = () => {
         loading={loading}
         buttonText="Signup"
         loadingText="Signing up..."
+        setToastMessage={setToastMessage}
       />
     </div>
   );

@@ -67,6 +67,7 @@ const useSignup = () => {
     handleSubmit,
     loading,
     toastMessage,
+    setToastMessage,
   };
 };
 

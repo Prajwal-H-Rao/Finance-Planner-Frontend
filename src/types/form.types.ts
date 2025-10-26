@@ -12,4 +12,7 @@ export interface IFormprops {
   loading: boolean;
   buttonText?: string;
   loadingText?: string;
+  setToastMessage: (
+    message: { message: string; success: boolean } | null
+  ) => void;
 }
