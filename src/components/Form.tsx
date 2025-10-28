@@ -39,7 +39,7 @@ const Form: React.FC<IFormprops> = ({
   };
 
   return (
-    <div className="relative mx-auto min-w-md min-h-max card bg-base-100 border border-primary/10 shadow-xl rounded-2xl">
+    <div className="relative mx-auto md:min-w-md  min-h-max card bg-base-100 border border-primary/10 shadow-xl rounded-2xl">
       <div className="card-body">
         <h2 className="card-title justify-center text-xl">{buttonText}</h2>
 

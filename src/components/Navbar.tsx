@@ -1,18 +1,23 @@
 import { useTheme } from "../hooks/Theme/useTheme";
 import useAuth from "../hooks/Auth/useAuth";
 import Icon from "../assets/bankruptcy.png";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
   const { isAuthenticated, loading, logout } = useAuth();
+  const location = useLocation();
 
+  const isAuthPage = ["/login", "/register"].includes(location.pathname);
   return (
     <nav className="navbar h-20 px-6 flex justify-between items-center">
       <div className="flex-1 flex items-center gap-2 h-full">
         <span className="h-full">
           <img className="w-15 h-5/6 " src={Icon} alt="Logo" />
         </span>
-        <h1 className="text-4xl font-bold kannada pt-5 animated-text">ಕಾಸ್ ಇಲ್ಲ</h1>
+        <h1 className="text-4xl font-bold kannada pt-5 animated-text">
+          ಕಾಸ್ ಇಲ್ಲ
+        </h1>
       </div>
 
       <div className="flex items-center gap-4">
@@ -58,7 +63,7 @@ const Navbar = () => {
         </label>
 
         {/* Logout Button - Only show when authenticated */}
-        {isAuthenticated && (
+        {isAuthenticated && !isAuthPage && (
           <button
             onClick={logout}
             disabled={loading}

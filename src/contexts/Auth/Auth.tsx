@@ -1,10 +1,13 @@
-import React, { createContext, useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { googleLogin, login, signup } from "../../services/auth/auth.services";
 import { useNavigate } from "react-router-dom";
 import axiosConfig from "../../configs/axiosConfig";
-import type { IAuthContextType, IAuthProviderProps, IToastMessage } from "../../types/auth.types";
-
-export const AuthContext = createContext<IAuthContextType | undefined>(undefined);
+import type {
+  IAuthContextType,
+  IAuthProviderProps,
+  IToastMessage,
+} from "../../types/auth.types";
+import { AuthContext } from "../../hooks/Auth/useAuth";
 
 export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
   const navigate = useNavigate();
@@ -139,16 +142,18 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
 
       localStorage.removeItem("authToken");
       localStorage.removeItem("refreshToken");
-      setIsAuthenticated(false);
-      window.location.href = "/login";
+      setTimeout(() => {
+        setIsAuthenticated(false);
+        window.location.href = "/login";
+      }, 1000);
     } catch (error) {
       console.error("Logout error:", error);
       localStorage.removeItem("authToken");
       localStorage.removeItem("refreshToken");
-      setIsAuthenticated(false);
-      window.location.href = "/login";
-    } finally {
-      setLoading(false);
+      setTimeout(() => {
+        setIsAuthenticated(false);
+        window.location.href = "/login";
+      }, 1000);
     }
   };
 
@@ -165,8 +170,5 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
     logout,
   };
 
-  return (
-    <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
-
