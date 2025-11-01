@@ -3,10 +3,13 @@ import type { IThemeProviderProps } from "../../types/themes.types";
 import { ThemeContext } from "../../hooks/Theme/useTheme.tsx";
 
 export const ThemeProvider = ({ children }: IThemeProviderProps) => {
-  const [theme, setTheme] = useState<string>("winter");
+  const [theme, setTheme] = useState<string>(
+    localStorage.getItem("theme") || "winter"
+  );
 
   const toggleTheme = () => {
     setTheme(theme === "winter" ? "night" : "winter");
+    localStorage.setItem("theme", theme === "winter" ? "night" : "winter");
   };
 
   useEffect(() => {
