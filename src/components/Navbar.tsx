@@ -42,6 +42,7 @@ const Navbar = () => {
           <input
             type="checkbox"
             data-theme={theme}
+            checked={theme === "night"}
             onChange={toggleTheme}
             className="toggle toggle-primary theme-controller"
           />
