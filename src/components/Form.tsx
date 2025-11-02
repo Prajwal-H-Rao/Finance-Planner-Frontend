@@ -87,7 +87,7 @@ const Form: React.FC<IFormprops> = ({
                 Don't have an account?{" "}
                 <span
                   className="text-primary cursor-pointer font-semibold"
-                  onClick={() => navigate("/signup")}
+                  onClick={() => navigate("/signup", { replace: true })}
                 >
                   Sign-Up
                 </span>
@@ -97,7 +97,7 @@ const Form: React.FC<IFormprops> = ({
                 Already have an account?{" "}
                 <span
                   className="text-primary cursor-pointer font-semibold"
-                  onClick={() => navigate("/login")}
+                  onClick={() => navigate("/login", { replace: true })}
                 >
                   Log-In
                 </span>
