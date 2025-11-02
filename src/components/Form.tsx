@@ -82,7 +82,7 @@ const Form: React.FC<IFormprops> = ({
               </button>
             </div>
 
-            {location.pathname === "/login" && (
+            {location.pathname === "/login" ? (
               <div className="text-center text-sm">
                 Don't have an account?{" "}
                 <span
@@ -92,9 +92,7 @@ const Form: React.FC<IFormprops> = ({
                   Sign-Up
                 </span>
               </div>
-            )}
-
-            {location.pathname === "/signup" && (
+            ) : (
               <div className="text-center text-sm">
                 Already have an account?{" "}
                 <span
