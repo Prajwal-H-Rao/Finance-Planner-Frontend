@@ -1,4 +1,4 @@
-import Dasboard from "../pages/Dasboard";
+import Dasboard from "../pages/Dashboard";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 
