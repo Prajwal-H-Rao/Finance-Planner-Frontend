@@ -10,14 +10,12 @@ const Navbar = () => {
 
   const isAuthPage = ["/login", "/register"].includes(location.pathname);
   return (
-    <nav className="navbar h-20 px-6 flex justify-between items-center">
+    <nav className="navbar h-20 px-6 flex justify-between items-center sticky top-0 bg-base-100/70 backdrop-blur-2xl z-50 shadow-xs print:hidden transition-shadow">
       <div className="flex-1 flex items-center gap-2 h-full">
         <span className="h-full">
           <img className="w-15 h-5/6 " src={Icon} alt="Logo" />
         </span>
-        <h1 className="text-4xl font-bold kannada pt-5 animated-text">
-          ಕಾಸ್ ಇಲ್ಲ
-        </h1>
+        <h1 className="text-4xl font-bold kannada pt-5">ಕಾಸ್ ಇಲ್ಲ</h1>
       </div>
 
       <div className="flex items-center gap-4">
@@ -42,9 +40,9 @@ const Navbar = () => {
           <input
             type="checkbox"
             data-theme={theme}
-            checked={theme === "night"}
+            checked={theme === "halloween"}
             onChange={toggleTheme}
-            className="toggle toggle-primary theme-controller"
+            className="toggle theme-controller"
           />
 
           {/* Dark Icon */}
@@ -68,7 +66,7 @@ const Navbar = () => {
           <button
             onClick={logout}
             disabled={loading}
-            className={`btn border-secondary/20 animate-button-error rounded-2xl flex items-center justify-center gap-2 ${
+            className={`btn border-base-content/20 rounded-2xl flex items-center justify-center gap-2 ${
               loading ? "btn-disabled" : ""
             }`}
           >

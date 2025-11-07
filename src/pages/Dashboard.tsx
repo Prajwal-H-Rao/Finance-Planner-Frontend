@@ -1,8 +1,28 @@
+import TesterComponent from "../components/TesterComponent";
+
 const Dashboard = () => {
   return (
     <div>
-      <h1 className="text-3xl font-bold">Dashboard Page</h1>
-      <p>Welcome to the dashboard!</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <TesterComponent />
+        <TesterComponent />
+        <TesterComponent />
+        <TesterComponent />
+        <TesterComponent />
+        <TesterComponent />
+        <TesterComponent />
+        <TesterComponent />
+        <TesterComponent />
+        <TesterComponent />
+        <TesterComponent />
+        <TesterComponent />
+        <TesterComponent />
+        <TesterComponent />
+        <TesterComponent />
+        <TesterComponent />
+        <TesterComponent />
+        <TesterComponent />
+      </div>
     </div>
   );
 };

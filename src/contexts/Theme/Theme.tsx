@@ -8,8 +8,8 @@ export const ThemeProvider = ({ children }: IThemeProviderProps) => {
   );
 
   const toggleTheme = () => {
-    setTheme(theme === "winter" ? "night" : "winter");
-    localStorage.setItem("theme", theme === "winter" ? "night" : "winter");
+    setTheme(theme === "winter" ? "halloween" : "winter");
+    localStorage.setItem("theme", theme === "winter" ? "halloween" : "winter");
   };
 
   useEffect(() => {

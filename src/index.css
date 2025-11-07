@@ -19,100 +19,27 @@ body {
     default: true;
     /* set winter as default */
 
-    --color-primary: #0ea5e9;
-    /* sky-500 */
-    --color-secondary: #14b8a6;
-    /* teal-400 */
-    --color-accent: #22c55e;
-
-    --color-success: #007d4f;
-
-    --color-error: #ef4444;
+    default: true;
+    /* set as default */
+    prefersdark: false;
+    /* set as default dark mode (prefers-color-scheme:dark) */
+    color-scheme: light;
+    /* color of browser-provided UI */
 }
 
-/* Night theme */
+/* Halloween theme */
 @plugin "daisyui/theme" {
-    name: "night";
-
-    --color-primary: #0ea5e9;
-    /* dark teal */
-    --color-secondary: #2563eb;
-    /* blue-600 */
-    --color-accent: #059669;
-    /* emerald-600 */
-    --color-success: #007d4f --color-error: #ef4444;
+    name: "halloween";
+    /* prefersdark: true; */
+    color-scheme: dark;
 }
 
-/* Gradient flow animation */
-@keyframes flow {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* Slide in from right */
-@keyframes slide-in-right {
-    0% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-/* Slide out to right */
-@keyframes slide-out-right {
-    0% {
-        transform: translateX(0);
-
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-}
 
 /* Classes to use */
 .animate-slide-in {
-    animation: slide-in-right 0.5s ease-out forwards;
+    animation: slide-in-right 0.25s ease-out forwards;
 }
 
 .animate-slide-out {
-    animation: slide-out-right 0.5s ease-in forwards;
-}
-
-/* Animated background utility */
-.animated-background {
-    @apply bg-linear-30 from-white via-primary/10 to-primary;
-    background-size: 200% 200%;
-    animation: flow 10s ease-in-out infinite;
-}
-
-.animate-button {
-    @apply bg-linear-30 from-primary via-primary/10 to-white border border-primary;
-    background-size: 200% 200%;
-    animation: flow 10s ease-in-out infinite;
-}
-
-.animate-button-error {
-    @apply bg-linear-30 from-error via-white to-error/10;
-    background-size: 200% 200%;
-    animation: flow 10s ease-in-out infinite;
-}
-
-.animated-text{
-    @apply  text-primary animate-pulse;
+    animation: slide-out-right 0.25s ease-in forwards;
 }
