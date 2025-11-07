@@ -207,5 +207,3 @@ The dashboard integrates data from multiple backend models — `User`, `Account`
 - **Notifications** for budget overspend or low balance
 
 ---
-
-## 🧱 Suggested File Structure (Frontend)
