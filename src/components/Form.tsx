@@ -68,7 +68,7 @@ const Form: React.FC<IFormprops> = ({
             <div className="form-control mt-4">
               <button
                 type="submit"
-                className="btn border-base-content/20 animate-button w-full rounded-2xl flex items-center justify-center gap-2"
+                className="btn border-base-content/20 w-full rounded-2xl flex items-center justify-center gap-2"
                 disabled={loading || googleLoading}
               >
                 {loading ? (
