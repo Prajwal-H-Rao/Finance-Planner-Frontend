@@ -10,7 +10,7 @@ const Navbar = () => {
 
   const isAuthPage = ["/login", "/register"].includes(location.pathname);
   return (
-    <nav className="navbar h-20 px-6 flex justify-between items-center sticky top-0 bg-base-100/70 backdrop-blur-2xl z-50 shadow-xs print:hidden transition-shadow">
+    <nav className="navbar h-20 px-6 flex justify-between items-center sticky top-0 bg-base-100/50 backdrop-blur-2xl z-50 shadow-xs print:hidden transition-shadow">
       <div className="flex-1 flex items-center gap-2 h-full">
         <span className="h-full">
           <img className="w-15 h-5/6 " src={Icon} alt="Logo" />
