@@ -1,4 +1,4 @@
-import Dasboard from "../pages/Dashboard";
+import Dashboard from "../pages/Dashboard";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 
@@ -15,7 +15,7 @@ export const Routes = [
   },
   {
     path: "/",
-    component: Dasboard,
+    component: Dashboard,
     protected: true,
   },
 ];
